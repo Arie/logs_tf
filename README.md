@@ -1,4 +1,4 @@
-logs_tf
+Logs.tf
 =======
 
 Gem for the logs.tf API
