@@ -13,4 +13,9 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
   gem.homepage      = 'http://github.com/Arie/logs_tf'
+
+  gem.add_development_dependency "webmock",  "~> 1.9.0"
+  gem.add_development_dependency "vcr",      "~> 2.4.0"
+  gem.add_development_dependency "pry-nav",  "~> 0.2.3"
+  gem.add_development_dependency "rspec",    "~> 2.12.0"
 end
