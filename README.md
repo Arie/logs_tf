@@ -18,7 +18,7 @@ log = LogsTF::Log.new(File.open('logfile.log'), 'map_name', 'title', 'api_key')
 upload = LogsTF::Upload.new(log)
 ```
 
-- If there something wrong an error will be raised which you can resue and inspect the message of:
+- If there something wrong an error will be raised which you can rescue and inspect the message of:
 
 ```ruby
 begin
