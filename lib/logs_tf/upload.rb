@@ -42,6 +42,10 @@ module LogsTF
       raise error_class, response_body["error"]
     end
 
+    def error
+      response_body["error"]
+    end
+
     private
 
     def response_body
@@ -54,10 +58,6 @@ module LogsTF
 
     def request_success?
       response.status == 200
-    end
-
-    def error
-      response_body["error"]
     end
 
     def post_options

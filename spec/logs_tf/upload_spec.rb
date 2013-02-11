@@ -46,6 +46,15 @@ module LogsTF
 
       end
 
+      describe '#error' do
+        before { upload.stub(:response => stub(:body => '{ "error": "foobar" }')) }
+
+        it "parses the JSON respone from logs.tf for the error message" do
+          upload.error.should == 'foobar'
+        end
+
+      end
+
       describe '#raise_logs_tf_error' do
 
         before { upload.stub(:response => stub(:body => '{ "error": "foobar" }')) }
