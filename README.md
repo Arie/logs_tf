@@ -1,4 +1,4 @@
-# Logs.tf interface
+# Logs.tf interface [![Build Status](https://secure.travis-ci.org/Arie/logs_tf.png)](http://travis-ci.org/Arie/logs_tf)
 
 A gem for the logs.tf API
 
