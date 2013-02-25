@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "multipart-post",  "~> 1.1.0"
 
   gem.add_development_dependency "vcr",            "~> 2.4.0"
+  gem.add_development_dependency 'coveralls'
   gem.add_development_dependency "pry-nav",        "~> 0.2.3"
   gem.add_development_dependency "rspec",          "~> 2.12.0"
-  gem.add_development_dependency "spec_coverage",  "~> 0.0.5"
 end
