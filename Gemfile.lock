@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    logs_tf (0.0.1)
+    logs_tf (0.0.2)
       faraday (~> 0.8.0)
       multipart-post (~> 1.2.0)
 
