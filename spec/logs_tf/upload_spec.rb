@@ -31,7 +31,7 @@ module LogsTF
         end
 
         it "raises the appropriate error when upload was unsuccessful" do
-          upload.stub(:connection => stub(:connection).as_null_object)
+          upload.stub(:connection => double(:connection).as_null_object)
           upload.stub(:request_success? => true)
           upload.stub(:upload_success? => false)
           upload.should_receive(:raise_logs_tf_error)
@@ -39,7 +39,7 @@ module LogsTF
         end
 
         it "raises an error when the response status is not 200" do
-          upload.stub(:connection => stub(:connection).as_null_object)
+          upload.stub(:connection => double(:connection).as_null_object)
           upload.stub(:request_success? => false)
           expect{upload.send}.to raise_error Upload::RequestError
         end
@@ -47,7 +47,7 @@ module LogsTF
       end
 
       describe '#error' do
-        before { upload.stub(:response => stub(:body => '{ "error": "foobar" }')) }
+        before { upload.stub(:response => double(:body => '{ "error": "foobar" }')) }
 
         it "parses the JSON respone from logs.tf for the error message" do
           upload.error.should == 'foobar'
@@ -57,7 +57,7 @@ module LogsTF
 
       describe '#raise_logs_tf_error' do
 
-        before { upload.stub(:response => stub(:body => '{ "error": "foobar" }')) }
+        before { upload.stub(:response => double(:body => '{ "error": "foobar" }')) }
 
         it "raises InvalidLogError" do
           upload.stub(:error => "Invalid log file")
@@ -77,6 +77,44 @@ module LogsTF
         it "raises InvalidAPIKeyError" do
           upload.stub(:error => "Invalid API key")
           expect{upload.raise_logs_tf_error}.to raise_error Upload::InvalidAPIKeyError
+        end
+
+        it "raises NoValidRoundsError" do
+          upload.stub(:error => "Log has no valid rounds (at least one needed)")
+          expect{upload.raise_logs_tf_error}.to raise_error Upload::NoValidRoundsError
+        end
+
+        it "raises NotEnoughPlayersError" do
+          upload.stub(:error => "Not enough players (2 needed)")
+          expect{upload.raise_logs_tf_error}.to raise_error Upload::NotEnoughPlayersError
+        end
+
+        it "raises LogIsEmptyError" do
+          upload.stub(:error => "Log is empty")
+          expect{upload.raise_logs_tf_error}.to raise_error Upload::LogIsEmptyError
+        end
+
+        it "raises ParsingFailedError" do
+          upload.stub(:error => "Parsing failed in line 123")
+          expect{upload.raise_logs_tf_error}.to raise_error Upload::ParsingFailedError
+
+          upload.stub(:error => "Parsing failed in line 456")
+          expect{upload.raise_logs_tf_error}.to raise_error Upload::ParsingFailedError
+        end
+
+        it "raises MissingAPIKeyOrLoginError" do
+          upload.stub(:error => "Missing API key or login")
+          expect{upload.raise_logs_tf_error}.to raise_error Upload::MissingAPIKeyOrLoginError
+        end
+
+        it "raises GuruMeditationError" do
+          upload.stub(:error => "Guru Meditation")
+          expect{upload.raise_logs_tf_error}.to raise_error Upload::GuruMeditationError
+        end
+
+        it "raises UnknownLogsTFError" do
+          upload.stub(:error => "Foobar")
+          expect{upload.raise_logs_tf_error}.to raise_error Upload::UnknownLogsTfError
         end
 
       end

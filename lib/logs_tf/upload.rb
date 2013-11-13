@@ -37,6 +37,20 @@ module LogsTF
         NotAuthenticatedError
       when "Invalid API key"
         InvalidAPIKeyError
+      when "Log has no valid rounds (at least one needed)"
+        NoValidRoundsError
+      when "Not enough players (2 needed)"
+        NotEnoughPlayersError
+      when "Log is empty"
+        LogIsEmptyError
+      when /^Parsing failed in line \d+$/
+        ParsingFailedError
+      when "Missing API key or login"
+        MissingAPIKeyOrLoginError
+      when "Guru Meditation"
+        GuruMeditationError
+      else
+        UnknownLogsTfError
       end
 
       raise error_class, response_body["error"]
@@ -97,6 +111,13 @@ module LogsTF
     class MissingLogError < Error; end
     class NotAuthenticatedError < Error; end
     class InvalidAPIKeyError < Error; end
+    class NoValidRoundsError < Error; end
+    class NotEnoughPlayersError < Error; end
+    class LogIsEmptyError < Error; end
+    class ParsingFailedError < Error; end
+    class MissingAPIKeyOrLoginError < Error; end
+    class GuruMeditationError < Error; end
+    class UnknownLogsTfError < Error; end
 
   end
 
