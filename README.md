@@ -1,4 +1,4 @@
-# Logs.tf interface [![Build Status](https://secure.travis-ci.org/Arie/logs_tf.png)](http://travis-ci.org/Arie/logs_tf) [![Dependencies](https://gemnasium.com/Arie/logs_tf.png)](https://gemnasium.com/Arie/logs_tf.png) [![Code Climate](https://codeclimate.com/github/Arie/logs_tf.png)](https://codeclimate.com/github/Arie/logs_tf) [![Coverage Status](https://coveralls.io/repos/Arie/logs_tf/badge.png?branch=master)](https://coveralls.io/r/Arie/logs_tf) 
+# Logs.tf interface [![Build Status](https://secure.travis-ci.org/Arie/logs_tf.png)](http://travis-ci.org/Arie/logs_tf) [![Dependencies](https://gemnasium.com/Arie/logs_tf.png)](https://gemnasium.com/Arie/logs_tf.png) [![Code Climate](https://codeclimate.com/github/Arie/logs_tf.png)](https://codeclimate.com/github/Arie/logs_tf) [![Coverage Status](https://coveralls.io/repos/github/Arie/logs_tf/badge.svg?branch=master)](https://coveralls.io/r/Arie/logs_tf) 
 
 A gem for the logs.tf API
 
