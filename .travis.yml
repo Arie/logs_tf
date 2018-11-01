@@ -1,6 +1,7 @@
 language: ruby
 rvm:
-  - 2.3.1
+  - 2.3.8
+  - 2.4.5
+  - 2.5.3
   - rbx-19mode
-  -# jruby-19mode
 script: ./script/ci
