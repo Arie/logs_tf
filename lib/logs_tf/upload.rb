@@ -60,8 +60,6 @@ module LogsTF
       response_body["error"]
     end
 
-    private
-
     def response_body
       @response_body ||= JSON.parse(response.body)
     end
@@ -73,6 +71,8 @@ module LogsTF
     def request_success?
       response.status == 200
     end
+
+    private
 
     def post_options
       { :key      => api_key,
